@@ -1,0 +1,16 @@
+stages:
+  - build
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+build_linux:
+  stage: build
+  script:
+    - mkdir build && cd build
+    - cmake .. -GNinja
+    - ninja
+  artifacts:
+    name: "shaderproj-linux-${CI_COMMIT_SHORT_SHA}"
+    paths:
+      - build/bin/shaderproj
