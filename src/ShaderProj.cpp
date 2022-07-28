@@ -46,6 +46,7 @@ static const char* g_PreambleText =
     "  vec4  iMouse;\n"
     "  vec4  iDate;\n"
     "  float iTimeDelta;\n"
+    "  float iFrameRate;\n"
     "  float iSampleRate;\n"
     "  int   iFrame;\n"
     "};\n"
@@ -662,6 +663,7 @@ void ShaderProj::Render()
     uniforms.iResolution[1] = float(height);
     uniforms.iTime = float(m_CurrentTime);
     uniforms.iTimeDelta = float(m_CurrentTimeDelta);
+    uniforms.iFrameRate = uniforms.iTimeDelta > 0.f ? (1.f / uniforms.iTimeDelta) : 0.f;
     uniforms.iMouse[0] = float(m_MouseLast.x);
     uniforms.iMouse[1] = float(height - 1.0 - m_MouseLast.y);
     uniforms.iMouse[2] = float(m_MouseDragStart.x) * (m_MouseDown ? 1.f : -1.f);

@@ -123,6 +123,7 @@ struct ShadertoyUniforms
     float     iMouse[4];      // mouse pixel coords. xy: current (if MLB down), zw: click
     float     iDate[4];       // (year, month, day, time in seconds)
     float     iTimeDelta;     // render time (in seconds)
+    float     iFrameRate;     // 1/iTimeDelta
     float     iSampleRate;    // sound sample rate (i.e., 44100)
     int       iFrame;         // shader playback frame
 };
