@@ -44,6 +44,7 @@ postdata = 's={ "shaders" : ["' + shaderId + '"] }'
 headers = {
 	'Content-Type': 'application/x-www-form-urlencoded',
 	'Referer': 'https://www.shadertoy.com/browse',
+	'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
 }
 
 response = requests.post(url, data = postdata, headers = headers)
@@ -75,7 +76,7 @@ for renderpass in content[0]["renderpass"]:
 		os.makedirs(os.path.dirname(outfile), exist_ok = True)
 		url = "http://shadertoy.com" + filepath
 		if not os.path.exists(outfile):
-			response = requests.get(url)
+			response = requests.get(url, headers = headers)
 			if response:
 				with open(outfile, 'wb') as f:
 					f.write(response.content)
